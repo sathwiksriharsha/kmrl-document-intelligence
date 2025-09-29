@@ -355,7 +355,7 @@ const FinanceDocumentSearch = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Input
                   placeholder="Search for budgets, invoices, contracts, audits..."
                   value={searchQuery}
@@ -363,24 +363,26 @@ const FinanceDocumentSearch = () => {
                   onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                   className="flex-1"
                 />
-                <Button onClick={handleSearch} disabled={isSearching}>
+                <Button onClick={handleSearch} disabled={isSearching} className="sm:w-auto w-full">
                   {isSearching ? "Searching..." : "Search"}
                 </Button>
               </div>
 
               {/* Document Type Filters */}
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:flex xl:flex-wrap gap-2">
                 <Button 
                   variant={selectedType === "all" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("all")}
                 >
-                  <Filter className="h-4 w-4 mr-1" />
+                  <Filter className="h-3 w-3 mr-1" />
                   All Types
                 </Button>
                 <Button 
                   variant={selectedType === "budget" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("budget")}
                 >
                   Budgets
@@ -388,6 +390,7 @@ const FinanceDocumentSearch = () => {
                 <Button 
                   variant={selectedType === "invoice" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("invoice")}
                 >
                   Invoices
@@ -395,6 +398,7 @@ const FinanceDocumentSearch = () => {
                 <Button 
                   variant={selectedType === "contract" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("contract")}
                 >
                   Contracts
@@ -402,6 +406,7 @@ const FinanceDocumentSearch = () => {
                 <Button 
                   variant={selectedType === "audit" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("audit")}
                 >
                   Audits
@@ -409,6 +414,7 @@ const FinanceDocumentSearch = () => {
                 <Button 
                   variant={selectedType === "tax" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("tax")}
                 >
                   Tax Documents
@@ -416,6 +422,7 @@ const FinanceDocumentSearch = () => {
                 <Button 
                   variant={selectedType === "financial-statement" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedType("financial-statement")}
                 >
                   Statements
@@ -517,20 +524,20 @@ const FinanceDocumentSearch = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 border-t">
-                      <div className="text-xs text-muted-foreground">
+                    <div className="flex flex-col gap-3 pt-2 border-t">
+                      <div className="text-xs text-muted-foreground break-all">
                         Location: {document.location}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="text-xs">
+                      <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Eye className="h-3 w-3 mr-1" />
                           Preview
                         </Button>
-                        <Button variant="outline" size="sm" className="text-xs">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Download className="h-3 w-3 mr-1" />
                           Download
                         </Button>
-                        <Button size="sm" className="text-xs">
+                        <Button size="sm" className="text-xs flex-1 sm:flex-none">
                           Open Document
                         </Button>
                       </div>

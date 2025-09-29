@@ -237,24 +237,24 @@ const FinanceDashboard = () => {
                       </Badge>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm">
                       <div>
-                        <p className="text-muted-foreground">Allocated</p>
-                        <p className="font-medium">{formatCurrency(budget.allocated)}</p>
+                        <p className="text-muted-foreground text-xs sm:text-sm">Allocated</p>
+                        <p className="font-medium text-xs sm:text-sm break-words">{formatCurrency(budget.allocated)}</p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground">Spent</p>
-                        <p className="font-medium">{formatCurrency(budget.spent)}</p>
+                        <p className="text-muted-foreground text-xs sm:text-sm">Spent</p>
+                        <p className="font-medium text-xs sm:text-sm break-words">{formatCurrency(budget.spent)}</p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground">Remaining</p>
-                        <p className={`font-medium ${budget.remaining < 0 ? "text-red-600" : "text-green-600"}`}>
+                        <p className="text-muted-foreground text-xs sm:text-sm">Remaining</p>
+                        <p className={`font-medium text-xs sm:text-sm break-words ${budget.remaining < 0 ? "text-red-600" : "text-green-600"}`}>
                           {formatCurrency(budget.remaining)}
                         </p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground">Utilization</p>
-                        <p className="font-medium">{budget.percentage}%</p>
+                        <p className="text-muted-foreground text-xs sm:text-sm">Utilization</p>
+                        <p className="font-medium text-xs sm:text-sm">{budget.percentage}%</p>
                       </div>
                     </div>
                     
@@ -368,49 +368,49 @@ const FinanceDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-100 rounded">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 border rounded-lg">
+                <div className="flex items-center gap-3 flex-1">
+                  <div className="p-2 bg-green-100 rounded flex-shrink-0">
                     <TrendingUp className="h-4 w-4 text-green-600" />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium">Passenger Revenue - September 16</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium break-words">Passenger Revenue - September 16</p>
                     <p className="text-xs text-muted-foreground">Daily ticket sales collection</p>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right flex-shrink-0">
                   <p className="text-sm font-medium text-green-600">+₹4,25,000</p>
                   <p className="text-xs text-muted-foreground">16:30 PM</p>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between p-3 border rounded-lg">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-red-100 rounded">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 border rounded-lg">
+                <div className="flex items-center gap-3 flex-1">
+                  <div className="p-2 bg-red-100 rounded flex-shrink-0">
                     <TrendingDown className="h-4 w-4 text-red-600" />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium">Maintenance Payment - Edapally Station</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium break-words">Maintenance Payment - Edapally Station</p>
                     <p className="text-xs text-muted-foreground">Platform repair and cleaning</p>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right flex-shrink-0">
                   <p className="text-sm font-medium text-red-600">-₹2,50,000</p>
                   <p className="text-xs text-muted-foreground">14:15 PM</p>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between p-3 border rounded-lg">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 border rounded-lg">
+                <div className="flex items-center gap-3 flex-1">
+                  <div className="p-2 bg-blue-100 rounded flex-shrink-0">
                     <FileText className="h-4 w-4 text-blue-600" />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium">Vendor Payment - Security Services</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium break-words">Vendor Payment - Security Services</p>
                     <p className="text-xs text-muted-foreground">Monthly security contract payment</p>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right flex-shrink-0">
                   <p className="text-sm font-medium text-red-600">-₹8,75,000</p>
                   <p className="text-xs text-muted-foreground">12:00 PM</p>
                 </div>

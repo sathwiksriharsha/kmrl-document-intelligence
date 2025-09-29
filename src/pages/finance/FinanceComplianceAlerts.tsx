@@ -294,15 +294,15 @@ const FinanceComplianceAlerts = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="outline" size="sm">All Alerts</Button>
-              <Button variant="outline" size="sm">Pending</Button>
-              <Button variant="outline" size="sm">Overdue</Button>
-              <Button variant="outline" size="sm">Critical Priority</Button>
-              <Button variant="outline" size="sm">Audit</Button>
-              <Button variant="outline" size="sm">Tax</Button>
-              <Button variant="outline" size="sm">Regulatory</Button>
-              <Button variant="outline" size="sm">Due This Week</Button>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap gap-2">
+              <Button variant="outline" size="sm" className="text-xs">All Alerts</Button>
+              <Button variant="outline" size="sm" className="text-xs">Pending</Button>
+              <Button variant="outline" size="sm" className="text-xs">Overdue</Button>
+              <Button variant="outline" size="sm" className="text-xs">Critical Priority</Button>
+              <Button variant="outline" size="sm" className="text-xs">Audit</Button>
+              <Button variant="outline" size="sm" className="text-xs">Tax</Button>
+              <Button variant="outline" size="sm" className="text-xs">Regulatory</Button>
+              <Button variant="outline" size="sm" className="text-xs">Due This Week</Button>
             </div>
           </CardContent>
         </Card>
@@ -404,31 +404,31 @@ const FinanceComplianceAlerts = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 border-t">
-                      <div className="text-xs text-muted-foreground">
+                    <div className="flex flex-col gap-3 pt-2 border-t">
+                      <div className="text-xs text-muted-foreground break-words">
                         Alert ID: {alert.id} • Created: {alert.createdDate}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="text-xs">
+                      <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Eye className="h-3 w-3 mr-1" />
                           View Details
                         </Button>
-                        <Button variant="outline" size="sm" className="text-xs">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Download className="h-3 w-3 mr-1" />
                           Export
                         </Button>
                         {alert.status === "pending" && (
-                          <Button size="sm" className="text-xs">
+                          <Button size="sm" className="text-xs flex-1 sm:flex-none">
                             Start Task
                           </Button>
                         )}
                         {alert.status === "in-progress" && (
-                          <Button size="sm" className="text-xs">
+                          <Button size="sm" className="text-xs flex-1 sm:flex-none">
                             Update Progress
                           </Button>
                         )}
                         {alert.status === "overdue" && (
-                          <Button variant="destructive" size="sm" className="text-xs">
+                          <Button variant="destructive" size="sm" className="text-xs flex-1 sm:flex-none">
                             Urgent Action
                           </Button>
                         )}

@@ -471,18 +471,18 @@ const VendorManagement = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 border-t">
+                    <div className="flex flex-col gap-2 pt-2 border-t">
                       <div className="text-xs text-muted-foreground">
                         Vendor ID: {vendor.id} • Registered: {vendor.registrationDate}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="text-xs">
+                      <div className="flex flex-wrap gap-2">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           View Contracts
                         </Button>
-                        <Button variant="outline" size="sm" className="text-xs">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           Payment History
                         </Button>
-                        <Button size="sm" className="text-xs">
+                        <Button size="sm" className="text-xs flex-1 sm:flex-none">
                           Contact Vendor
                         </Button>
                       </div>
@@ -509,10 +509,10 @@ const VendorManagement = () => {
             <div className="space-y-3">
               {mockContracts.map((contract) => (
                 <div key={contract.id} className="p-4 border rounded-lg">
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col gap-4">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h4 className="font-semibold">{contract.title}</h4>
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <h4 className="font-semibold break-words">{contract.title}</h4>
                         <Badge className={`text-xs ${getContractStatusColor(contract.status)}`}>
                           {contract.status.toUpperCase()}
                         </Badge>
@@ -520,8 +520,8 @@ const VendorManagement = () => {
                           {contract.type.toUpperCase()}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">{contract.description}</p>
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+                      <p className="text-sm text-muted-foreground mb-3 break-words">{contract.description}</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm">
                         <div>
                           <p className="text-muted-foreground">Contract Value</p>
                           <p className="font-medium">{formatCurrency(contract.value)}</p>
@@ -536,15 +536,15 @@ const VendorManagement = () => {
                         </div>
                         <div>
                           <p className="text-muted-foreground">Payment Terms</p>
-                          <p className="font-medium">{contract.paymentTerms}</p>
+                          <p className="font-medium break-words">{contract.paymentTerms}</p>
                         </div>
                       </div>
                     </div>
-                    <div className="flex gap-2 ml-4">
-                      <Button variant="outline" size="sm" className="text-xs">
+                    <div className="flex flex-wrap gap-2 pt-2 border-t">
+                      <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                         View Details
                       </Button>
-                      <Button size="sm" className="text-xs">
+                      <Button size="sm" className="text-xs flex-1 sm:flex-none">
                         Manage
                       </Button>
                     </div>
