@@ -90,7 +90,7 @@ const navigationConfig = {
 };
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, isMobile } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
   const isCollapsed = state === "collapsed";
@@ -130,7 +130,7 @@ export function AppSidebar() {
     >
       <SidebarContent className="p-1 sm:p-2">
         <SidebarGroup>
-          <SidebarGroupLabel className={`text-muted-foreground font-medium text-xs sm:text-sm ${isCollapsed ? 'sr-only' : ''}`}>
+          <SidebarGroupLabel className={`text-muted-foreground font-medium text-xs sm:text-sm ${isCollapsed && !isMobile ? 'sr-only' : ''}`}>
             Navigation
           </SidebarGroupLabel>
           
@@ -150,7 +150,7 @@ export function AppSidebar() {
                   >
                     <NavLink to={item.url} className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2">
                       <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive(item.url) ? 'text-primary' : ''}`} />
-                      {!isCollapsed && (
+                      {(!isCollapsed || isMobile) && (
                         <>
                           <span className="font-medium text-sm sm:text-base truncate">{item.title}</span>
                           {isActive(item.url) && (
