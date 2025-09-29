@@ -53,7 +53,7 @@ A comprehensive AI-powered document summarization and intelligence system built 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/kmrl-document-intelligence.git
+   git clone https://github.com/sathwiksriharsha/kmrl-document-intelligence.git
    cd kmrl-document-intelligence
    ```
 
