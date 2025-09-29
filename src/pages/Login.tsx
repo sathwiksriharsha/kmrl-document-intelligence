@@ -85,23 +85,24 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6">
+    <div className="min-h-screen bg-gradient-subtle flex items-center justify-center p-3 sm:p-4">
+      <div className="w-full max-w-md space-y-4 sm:space-y-6">
         {/* Logo and Header */}
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-3 sm:space-y-4">
           <div className="flex justify-center">
             <img 
               src={kmrlLogo} 
               alt="KMRL Logo" 
-              className="h-16 w-auto"
+              className="h-12 sm:h-16 w-auto"
             />
           </div>
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold text-foreground flex items-center justify-center gap-2">
-              <Sparkles className="h-6 w-6 text-primary" />
-              Document Intelligence System
+          <div className="space-y-1 sm:space-y-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground flex items-center justify-center gap-2">
+              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              <span className="hidden sm:inline">Document Intelligence System</span>
+              <span className="sm:hidden">KMRL Intelligence</span>
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm sm:text-base">
               Sign in to access your department dashboard
             </p>
           </div>
@@ -109,25 +110,25 @@ const Login = () => {
 
         {/* Login Form */}
         <Card className="shadow-lg border-0">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-xl flex items-center gap-2">
-              <Shield className="h-5 w-5 text-primary" />
+          <CardHeader className="space-y-1 p-4 sm:p-6">
+            <CardTitle className="text-lg sm:text-xl flex items-center gap-2">
+              <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               Sign In
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-sm">
               Enter your credentials to access the system
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+          <CardContent className="p-4 sm:p-6">
+            <form onSubmit={handleLogin} className="space-y-3 sm:space-y-4">
               {error && (
                 <Alert variant="destructive">
-                  <AlertDescription>{error}</AlertDescription>
+                  <AlertDescription className="text-sm">{error}</AlertDescription>
                 </Alert>
               )}
 
-              <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="email" className="text-sm">Email Address</Label>
                 <Input
                   id="email"
                   type="email"
@@ -136,11 +137,12 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
                   required
+                  className="h-10 sm:h-11"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="password" className="text-sm">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -150,33 +152,34 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     disabled={isLoading}
                     required
+                    className="h-10 sm:h-11 pr-10"
                   />
                   <Button
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
+                    className="absolute right-0 top-0 h-full px-2 sm:px-3 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
                     disabled={isLoading}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
                     )}
                   </Button>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="department">Department</Label>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="department" className="text-sm">Department</Label>
                 <Select value={department} onValueChange={setDepartment} disabled={isLoading}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-10 sm:h-11">
                     <SelectValue placeholder="Select your department" />
                   </SelectTrigger>
                   <SelectContent>
                     {departments.map((dept) => (
-                      <SelectItem key={dept.value} value={dept.value}>
+                      <SelectItem key={dept.value} value={dept.value} className="text-sm">
                         {dept.label}
                       </SelectItem>
                     ))}
@@ -186,12 +189,12 @@ const Login = () => {
 
               <Button 
                 type="submit" 
-                className="w-full" 
+                className="w-full h-10 sm:h-11 text-sm sm:text-base" 
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-white mr-2"></div>
                     Signing in...
                   </>
                 ) : (

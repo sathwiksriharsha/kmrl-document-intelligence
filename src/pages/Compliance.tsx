@@ -165,18 +165,18 @@ const Compliance = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="alerts" className="gap-2">
-              <Bell className="h-4 w-4" />
-              Alerts & Notifications
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-10">
+            <TabsTrigger value="alerts" className="gap-1 sm:gap-2 justify-center py-2 sm:py-1.5">
+              <Bell className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="text-xs sm:text-sm">Alerts & Notifications</span>
             </TabsTrigger>
-            <TabsTrigger value="calendar" className="gap-2">
-              <CalendarIcon className="h-4 w-4" />
-              Compliance Calendar
+            <TabsTrigger value="calendar" className="gap-1 sm:gap-2 justify-center py-2 sm:py-1.5">
+              <CalendarIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="text-xs sm:text-sm">Compliance Calendar</span>
             </TabsTrigger>
-            <TabsTrigger value="timeline" className="gap-2">
-              <BarChart3 className="h-4 w-4" />
-              Timeline View
+            <TabsTrigger value="timeline" className="gap-1 sm:gap-2 justify-center py-2 sm:py-1.5">
+              <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="text-xs sm:text-sm">Timeline View</span>
             </TabsTrigger>
           </TabsList>
 
@@ -211,9 +211,9 @@ const Compliance = () => {
             
             <div className="flex flex-col lg:flex-row gap-6">
               <div className="flex-1 space-y-6">
-                <div className="flex flex-col lg:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Select value={departmentFilter} onValueChange={setDepartmentFilter}>
-                    <SelectTrigger className="w-full lg:w-48">
+                    <SelectTrigger className="w-full sm:w-48 h-10">
                       <SelectValue placeholder="Filter by department" />
                     </SelectTrigger>
                     <SelectContent>
@@ -230,7 +230,7 @@ const Compliance = () => {
                     placeholder="Search alerts..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1"
+                    className="flex-1 h-10"
                   />
                   <div className="flex items-center space-x-2">
                     <Switch

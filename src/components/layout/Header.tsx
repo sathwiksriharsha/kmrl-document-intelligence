@@ -67,21 +67,21 @@ export function Header() {
 
   return (
     <header className="h-16 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <div className="flex h-full items-center justify-between px-6">
+      <div className="flex h-full items-center justify-between px-3 sm:px-6">
         {/* Left Section - Sidebar trigger + Logo + Title */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <SidebarTrigger className="hover:bg-secondary" />
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <img 
               src={kmrlLogo} 
               alt="KMRL Logo" 
-              className="h-8 w-8 rounded-lg shadow-sm"
+              className="h-6 w-6 sm:h-8 sm:w-8 rounded-lg shadow-sm"
             />
             <div className="flex flex-col">
-              <h1 className="text-lg font-semibold text-foreground">
+              <h1 className="text-sm sm:text-lg font-semibold text-foreground truncate max-w-[150px] sm:max-w-none">
                 {dashboardTitle}
               </h1>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-muted-foreground hidden sm:block">
                 Kochi Metro Rail Limited
               </span>
             </div>
@@ -89,26 +89,26 @@ export function Header() {
         </div>
 
         {/* Right Section - Notifications + Profile */}
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-4 w-4" />
+        <div className="flex items-center gap-1 sm:gap-3">
+          <Button variant="ghost" size="icon" className="relative h-8 w-8 sm:h-10 sm:w-10">
+            <Bell className="h-3 w-3 sm:h-4 sm:w-4" />
             <span className="absolute -top-1 -right-1 h-2 w-2 bg-accent rounded-full"></span>
           </Button>
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="flex items-center gap-2 h-auto p-2">
-                <Avatar className="h-8 w-8">
+              <Button variant="ghost" className="flex items-center gap-1 sm:gap-2 h-auto p-1 sm:p-2">
+                <Avatar className="h-6 w-6 sm:h-8 sm:w-8">
                   <AvatarImage src="" alt="User" />
                   <AvatarFallback className="bg-primary/10 text-primary">
-                    <User className="h-4 w-4" />
+                    <User className="h-3 w-3 sm:h-4 sm:w-4" />
                   </AvatarFallback>
                 </Avatar>
                 <div className="hidden md:flex flex-col text-sm text-left">
                   <span className="font-medium text-foreground">{user.name}</span>
                   <span className="text-xs text-muted-foreground">{user.email}</span>
                 </div>
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">

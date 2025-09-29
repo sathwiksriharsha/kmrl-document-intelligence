@@ -177,23 +177,23 @@ const Roles = () => {
         </div>
 
         <Tabs defaultValue="safety" className="w-full">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 h-auto md:h-10">
             {roles.map((role) => {
               const Icon = role.icon;
               return (
-                <TabsTrigger key={role.id} value={role.id} className="gap-2">
-                  <Icon className="h-4 w-4" />
-                  {role.name}
+                <TabsTrigger key={role.id} value={role.id} className="gap-1 sm:gap-2 justify-center py-2 md:py-1.5">
+                  <Icon className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="text-xs sm:text-sm">{role.name}</span>
                 </TabsTrigger>
               );
             })}
           </TabsList>
           
           {roles.map((role) => (
-            <TabsContent key={role.id} value={role.id} className="space-y-6">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2 space-y-4">
-                  <h2 className="text-xl font-semibold">{role.name} Documents</h2>
+            <TabsContent key={role.id} value={role.id} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div className="lg:col-span-2 space-y-3 sm:space-y-4">
+                  <h2 className="text-lg sm:text-xl font-semibold">{role.name} Documents</h2>
                   {filterDocuments(mockDocuments[role.id as keyof typeof mockDocuments] || []).map((doc, index) => (
                     <RoleDocumentCard
                       key={index}
@@ -203,10 +203,10 @@ const Roles = () => {
                     />
                   ))}
                   {filterDocuments(mockDocuments[role.id as keyof typeof mockDocuments] || []).length === 0 && (
-                    <p className="text-muted-foreground text-center py-8">No documents match the current filter.</p>
+                    <p className="text-muted-foreground text-center py-8 text-sm sm:text-base">No documents match the current filter.</p>
                   )}
                 </div>
-                <div>
+                <div className="order-first lg:order-last">
                   <RoleTimeline events={mockTimelines[role.id as keyof typeof mockTimelines] || []} />
                 </div>
               </div>

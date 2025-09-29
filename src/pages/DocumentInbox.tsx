@@ -379,8 +379,8 @@ const DocumentInbox = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-              <div className="space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+              <div className="space-y-2 sm:col-span-2 lg:col-span-1">
                 <label className="text-sm font-medium">Search</label>
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -388,7 +388,7 @@ const DocumentInbox = () => {
                     placeholder="Search documents..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 h-10"
                   />
                 </div>
               </div>
@@ -396,7 +396,7 @@ const DocumentInbox = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Source</label>
                 <Select value={sourceFilter} onValueChange={setSourceFilter}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-10">
                     <SelectValue placeholder="All Sources" />
                   </SelectTrigger>
                   <SelectContent>
@@ -414,7 +414,7 @@ const DocumentInbox = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Department</label>
                 <Select value={departmentFilter} onValueChange={setDepartmentFilter}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-10">
                     <SelectValue placeholder="All Departments" />
                   </SelectTrigger>
                   <SelectContent>
@@ -431,7 +431,7 @@ const DocumentInbox = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Language</label>
                 <Select value={languageFilter} onValueChange={setLanguageFilter}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-10">
                     <SelectValue placeholder="All Languages" />
                   </SelectTrigger>
                   <SelectContent>
@@ -445,7 +445,7 @@ const DocumentInbox = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">Priority</label>
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   {["High Risk", "Urgent", "Normal"].map((priority) => (
                     <div key={priority} className="flex items-center space-x-2">
                       <Checkbox
@@ -453,7 +453,7 @@ const DocumentInbox = () => {
                         checked={priorityFilters.includes(priority)}
                         onCheckedChange={(checked) => handlePriorityFilterChange(priority, checked as boolean)}
                       />
-                      <Label htmlFor={priority} className="text-sm">{priority}</Label>
+                      <Label htmlFor={priority} className="text-xs sm:text-sm">{priority}</Label>
                     </div>
                   ))}
                 </div>
@@ -461,7 +461,7 @@ const DocumentInbox = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">Actions</label>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full h-10 text-sm">
                   Summarize All
                 </Button>
               </div>
@@ -486,20 +486,20 @@ const DocumentInbox = () => {
           ) : (
             filteredDocuments.map((doc) => (
               <Card key={doc.id} className={`transition-all hover:shadow-md relative ${doc.isReviewed ? 'bg-muted/20' : ''} border-l-4 ${doc.priority === 'High Risk' ? 'border-l-red-500' : doc.priority === 'Urgent' ? 'border-l-orange-500' : 'border-l-green-500'}`}>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className={`p-2 rounded-lg ${sourceColors[doc.source]} relative`}>
+                <CardContent className="p-3 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className={`p-2 rounded-lg ${sourceColors[doc.source]} relative flex-shrink-0`}>
                       {getSourceIcon(doc.source)}
                       {/* Priority dot indicator */}
                       <div className={`absolute -top-1 -right-1 w-3 h-3 rounded-full ${doc.priority === 'High Risk' ? 'bg-red-500' : doc.priority === 'Urgent' ? 'bg-orange-500' : 'bg-green-500'}`}></div>
                     </div>
                     
-                    <div className="flex-1 space-y-3">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="space-y-1">
+                    <div className="flex-1 space-y-2 sm:space-y-3 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                        <div className="space-y-1 min-w-0">
                           <div className="flex items-start gap-2">
-                            <h3 className="font-semibold text-lg">{doc.title}</h3>
-                            {doc.isReviewed && <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />}
+                            <h3 className="font-semibold text-base sm:text-lg break-words leading-tight">{doc.title}</h3>
+                            {doc.isReviewed && <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 mt-0.5 flex-shrink-0" />}
                           </div>
                           
                           {/* Multi-department tags */}
@@ -507,20 +507,20 @@ const DocumentInbox = () => {
                             <div className="flex items-center gap-2">
                               <Badge variant="outline" className="text-xs">
                                 <Users className="h-3 w-3 mr-1" />
-                                Shared: {doc.departments.join(" · ")}
+                                <span className="hidden sm:inline">Shared: </span>{doc.departments.join(" · ")}
                               </Badge>
                             </div>
                           )}
                           
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                             <div className="flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
-                              {doc.timestamp}
+                              <span className="truncate">{doc.timestamp}</span>
                             </div>
                             {doc.department && (
                               <div className="flex items-center gap-1">
                                 <Tag className="h-3 w-3" />
-                                {doc.department}
+                                <span className="truncate">{doc.department}</span>
                               </div>
                             )}
                             <div className="flex items-center gap-1">
@@ -528,12 +528,12 @@ const DocumentInbox = () => {
                               {doc.language}
                             </div>
                             {doc.fileSize && (
-                              <span>{doc.fileSize}</span>
+                              <span className="hidden sm:inline">{doc.fileSize}</span>
                             )}
                           </div>
                         </div>
                         
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                           {getPriorityBadge(doc.priority)}
                           {getStatusBadge(doc.status)}
                         </div>
@@ -557,26 +557,26 @@ const DocumentInbox = () => {
                           <Separator />
 
                           {/* Quick Action Buttons */}
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                              Source: <span className="capitalize font-medium">{doc.source}</span>
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                              <span>Source: <span className="capitalize font-medium">{doc.source}</span></span>
                               {doc.forwardedTo && (
-                                <Badge variant="outline" className="text-xs ml-2">
+                                <Badge variant="outline" className="text-xs">
                                   Forwarded to: {doc.forwardedTo.join(", ")}
                                 </Badge>
                               )}
                               {doc.followUpDate && (
-                                <Badge variant="outline" className="text-xs ml-2">
+                                <Badge variant="outline" className="text-xs">
                                   <Clock className="h-3 w-3 mr-1" />
                                   Follow-up: {new Date(doc.followUpDate).toLocaleDateString()}
                                 </Badge>
                               )}
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex flex-wrap items-center gap-1 sm:gap-2">
                               {!doc.isReviewed && (
-                                <Button variant="outline" size="sm" onClick={() => handleMarkReviewed(doc.id)} className="gap-1">
+                                <Button variant="outline" size="sm" onClick={() => handleMarkReviewed(doc.id)} className="gap-1 text-xs sm:text-sm">
                                   <CheckCircle className="h-3 w-3" />
-                                  Mark Reviewed
+                                  <span className="hidden sm:inline">Mark </span>Reviewed
                                 </Button>
                               )}
                               <Button 
@@ -586,7 +586,7 @@ const DocumentInbox = () => {
                                   setSelectedDocForForward(doc);
                                   setIsForwardDialogOpen(true);
                                 }}
-                                className="gap-1"
+                                className="gap-1 text-xs sm:text-sm"
                               >
                                 <Forward className="h-3 w-3" />
                                 Forward
@@ -595,14 +595,14 @@ const DocumentInbox = () => {
                                 variant="outline" 
                                 size="sm" 
                                 onClick={() => handleScheduleFollowUp(doc.id)}
-                                className="gap-1"
+                                className="gap-1 text-xs sm:text-sm"
                               >
                                 <Clock className="h-3 w-3" />
-                                Follow-up
+                                <span className="hidden sm:inline">Follow-up</span><span className="sm:hidden">Follow</span>
                               </Button>
-                              <Button variant="outline" size="sm" className="gap-2">
-                                <Eye className="h-4 w-4" />
-                                View Full
+                              <Button variant="outline" size="sm" className="gap-1 text-xs sm:text-sm">
+                                <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
+                                <span className="hidden sm:inline">View Full</span><span className="sm:hidden">View</span>
                               </Button>
                             </div>
                           </div>

@@ -84,19 +84,19 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileUpload }) => {
             Document Uploaded
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-start gap-4 p-4 bg-secondary rounded-lg">
+        <CardContent className="space-y-3 sm:space-y-4 p-3 sm:p-6">
+          <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-secondary rounded-lg">
             {getFileIcon(uploadedFile.file)}
             <div className="flex-1 min-w-0">
-              <p className="font-medium truncate">{uploadedFile.file.name}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-medium truncate text-sm sm:text-base">{uploadedFile.file.name}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 {formatFileSize(uploadedFile.file.size)}
               </p>
-              <div className="flex gap-2 mt-2">
-                <Badge variant="outline">
+              <div className="flex flex-wrap gap-1 sm:gap-2 mt-2">
+                <Badge variant="outline" className="text-xs">
                   {detectLanguage(uploadedFile.file.name)}
                 </Badge>
-                <Badge variant="secondary">
+                <Badge variant="secondary" className="text-xs">
                   {uploadedFile.file.type.split('/')[1]?.toUpperCase() || 'FILE'}
                 </Badge>
               </div>
@@ -109,7 +109,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileUpload }) => {
               <img 
                 src={uploadedFile.preview} 
                 alt="Document preview"
-                className="w-full h-32 object-cover rounded-lg border"
+                className="w-full h-24 sm:h-32 object-cover rounded-lg border"
               />
             </div>
           )}
@@ -139,31 +139,31 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileUpload }) => {
           Upload Document
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-3 sm:p-6">
         <div
           {...getRootProps()}
-          className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-smooth hover:border-primary ${
+          className={`border-2 border-dashed rounded-lg p-4 sm:p-8 text-center cursor-pointer transition-smooth hover:border-primary ${
             isDragActive ? 'border-primary bg-primary/5' : 'border-border'
           } ${isUploading ? 'pointer-events-none opacity-50' : ''}`}
         >
           <input {...getInputProps()} />
           
           {isUploading ? (
-            <div className="space-y-4">
-              <div className="animate-spin mx-auto h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="animate-spin mx-auto h-6 w-6 sm:h-8 sm:w-8 border-2 border-primary border-t-transparent rounded-full"></div>
               <p className="text-sm text-muted-foreground">Processing document...</p>
             </div>
           ) : (
-            <div className="space-y-4">
-              <CloudUpload className="mx-auto h-12 w-12 text-muted-foreground" />
+            <div className="space-y-3 sm:space-y-4">
+              <CloudUpload className="mx-auto h-8 w-8 sm:h-12 sm:w-12 text-muted-foreground" />
               
               {isDragActive ? (
-                <p className="text-primary font-medium">Drop the file here...</p>
+                <p className="text-primary font-medium text-sm sm:text-base">Drop the file here...</p>
               ) : (
                 <>
                   <div>
-                    <p className="font-medium">Drag & drop your document here</p>
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p className="font-medium text-sm sm:text-base">Drag & drop your document here</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                       Supports PDF, DOCX, Images (PNG, JPG)
                     </p>
                   </div>
@@ -174,7 +174,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileUpload }) => {
                     <div className="h-px bg-border flex-1"></div>
                   </div>
                   
-                  <Button variant="outline" className="mt-2">
+                  <Button variant="outline" className="mt-2 w-full sm:w-auto">
                     Choose File
                   </Button>
                 </>

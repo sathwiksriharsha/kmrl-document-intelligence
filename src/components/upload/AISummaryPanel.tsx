@@ -76,10 +76,10 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({ uploadedFile }) 
             AI-Generated Summary
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-center h-64">
+        <CardContent className="flex items-center justify-center h-48 sm:h-64 p-3 sm:p-6">
           <div className="text-center space-y-2">
-            <Brain className="mx-auto h-12 w-12 text-muted-foreground" />
-            <p className="text-muted-foreground">Upload a document to see AI analysis</p>
+            <Brain className="mx-auto h-8 w-8 sm:h-12 sm:w-12 text-muted-foreground" />
+            <p className="text-muted-foreground text-sm sm:text-base">Upload a document to see AI analysis</p>
           </div>
         </CardContent>
       </Card>
@@ -95,15 +95,15 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({ uploadedFile }) 
             AI-Generated Summary
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex items-center justify-center h-64">
-          <div className="text-center space-y-4">
+        <CardContent className="flex items-center justify-center h-48 sm:h-64 p-3 sm:p-6">
+          <div className="text-center space-y-3 sm:space-y-4">
             <div className="relative">
-              <div className="animate-spin mx-auto h-12 w-12 border-4 border-primary border-t-transparent rounded-full"></div>
-              <Brain className="absolute inset-0 m-auto h-6 w-6 text-primary" />
+              <div className="animate-spin mx-auto h-8 w-8 sm:h-12 sm:w-12 border-4 border-primary border-t-transparent rounded-full"></div>
+              <Brain className="absolute inset-0 m-auto h-4 w-4 sm:h-6 sm:w-6 text-primary" />
             </div>
             <div className="space-y-2">
-              <p className="font-medium">AI is analyzing your document...</p>
-              <p className="text-sm text-muted-foreground">This may take a few moments</p>
+              <p className="font-medium text-sm sm:text-base">AI is analyzing your document...</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">This may take a few moments</p>
             </div>
             <div className="flex justify-center space-x-1">
               <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
@@ -130,16 +130,16 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({ uploadedFile }) 
             </Badge>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6 max-h-96 overflow-y-auto">
+        <CardContent className="space-y-4 sm:space-y-6 max-h-80 sm:max-h-96 overflow-y-auto p-3 sm:p-6">
           {/* Key Points */}
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             <h3 className="font-semibold text-sm flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-accent" />
               Key Points
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 sm:space-y-2">
               {summary.keyPoints.map((point, index) => (
-                <li key={index} className="flex items-start gap-2 text-sm">
+                <li key={index} className="flex items-start gap-2 text-xs sm:text-sm">
                   <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <span>{point}</span>
                 </li>
@@ -149,26 +149,26 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({ uploadedFile }) 
 
           {/* Critical Alerts */}
           {summary.criticalAlerts.length > 0 && (
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <h3 className="font-semibold text-sm flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4 text-destructive" />
                 Critical Alerts
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-1.5 sm:space-y-2">
                 {summary.criticalAlerts.map((alert, index) => (
                   <div
                     key={index}
-                    className={`p-3 rounded-lg border-l-4 ${
+                    className={`p-2 sm:p-3 rounded-lg border-l-4 ${
                       alert.priority === 'high'
                         ? 'bg-destructive/10 border-l-destructive'
                         : 'bg-yellow-50 border-l-yellow-500'
                     }`}
                   >
                     <div className="flex items-center gap-2">
-                      <AlertTriangle className={`h-4 w-4 ${
+                      <AlertTriangle className={`h-3 w-3 sm:h-4 sm:w-4 ${
                         alert.priority === 'high' ? 'text-destructive' : 'text-yellow-600'
                       }`} />
-                      <span className="text-sm font-medium">{alert.message}</span>
+                      <span className="text-xs sm:text-sm font-medium">{alert.message}</span>
                     </div>
                   </div>
                 ))}
@@ -178,20 +178,20 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({ uploadedFile }) 
 
           {/* Action Suggestions */}
           {summary.actionSuggestions.length > 0 && (
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <h3 className="font-semibold text-sm flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-accent" />
                 Action Suggestions
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-1.5 sm:space-y-2">
                 {summary.actionSuggestions.map((suggestion, index) => (
                   <div
                     key={index}
-                    className="p-3 bg-accent/10 border-l-4 border-l-accent rounded-lg"
+                    className="p-2 sm:p-3 bg-accent/10 border-l-4 border-l-accent rounded-lg"
                   >
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-accent" />
-                      <span className="text-sm">{suggestion}</span>
+                      <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-accent" />
+                      <span className="text-xs sm:text-sm">{suggestion}</span>
                     </div>
                   </div>
                 ))}
@@ -199,8 +199,8 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({ uploadedFile }) 
             </div>
           )}
 
-          <Button className="w-full" variant="outline">
-            <ExternalLink className="h-4 w-4 mr-2" />
+          <Button className="w-full text-sm" variant="outline">
+            <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
             Open Full Document
           </Button>
         </CardContent>

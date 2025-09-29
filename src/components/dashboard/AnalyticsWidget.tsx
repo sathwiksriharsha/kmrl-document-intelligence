@@ -65,38 +65,38 @@ export const AnalyticsWidget = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">{mockAnalyticsData.totalDocs30d}</div>
+            <div className="text-xl sm:text-2xl font-bold text-primary">{mockAnalyticsData.totalDocs30d}</div>
             <div className="text-xs text-muted-foreground">Total Docs</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-red-600">{mockAnalyticsData.highRisk30d}</div>
+            <div className="text-xl sm:text-2xl font-bold text-red-600">{mockAnalyticsData.highRisk30d}</div>
             <div className="text-xs text-muted-foreground">High Risk</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-orange-600">{mockAnalyticsData.pendingFollowups}</div>
+            <div className="text-xl sm:text-2xl font-bold text-orange-600">{mockAnalyticsData.pendingFollowups}</div>
             <div className="text-xs text-muted-foreground">Pending Follow-ups</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-green-600">{mockAnalyticsData.avgTimeToAction}</div>
+            <div className="text-xl sm:text-2xl font-bold text-green-600">{mockAnalyticsData.avgTimeToAction}</div>
             <div className="text-xs text-muted-foreground">Avg. Time to Action</div>
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           <h4 className="text-sm font-medium">Documents by Source (Last 7 Days)</h4>
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             {Object.entries(mockAnalyticsData.docsBySource)
               .sort(([,a], [,b]) => b - a)
               .slice(0, 3)
               .map(([source, count]) => {
                 const percentage = Math.round((count / totalSourceDocs) * 100);
                 return (
-                  <div key={source} className="flex items-center gap-3">
-                    <div className="flex items-center gap-2 w-20">
+                  <div key={source} className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex items-center gap-1 sm:gap-2 w-16 sm:w-20">
                       {getSourceIcon(source)}
-                      <span className="text-xs capitalize">{source}</span>
+                      <span className="text-xs capitalize truncate">{source}</span>
                     </div>
                     <div className="flex-1 bg-muted rounded-full h-2">
                       <div 

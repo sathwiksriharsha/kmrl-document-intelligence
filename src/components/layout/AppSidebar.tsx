@@ -124,18 +124,18 @@ export function AppSidebar() {
   return (
     <Sidebar
       className={`transition-all duration-300 ${
-        isCollapsed ? "w-16" : "w-64"
+        isCollapsed ? "w-16" : "w-64 sm:w-64"
       } border-r border-border bg-gradient-subtle`}
       collapsible="icon"
     >
-      <SidebarContent className="p-2">
+      <SidebarContent className="p-1 sm:p-2">
         <SidebarGroup>
-          <SidebarGroupLabel className={`text-muted-foreground font-medium ${isCollapsed ? 'sr-only' : ''}`}>
+          <SidebarGroupLabel className={`text-muted-foreground font-medium text-xs sm:text-sm ${isCollapsed ? 'sr-only' : ''}`}>
             Navigation
           </SidebarGroupLabel>
           
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
+            <SidebarMenu className="space-y-0.5 sm:space-y-1">
               {navigationItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
@@ -148,13 +148,13 @@ export function AppSidebar() {
                       }
                     `}
                   >
-                    <NavLink to={item.url} className="flex items-center gap-3 px-3 py-2">
-                      <item.icon className={`h-5 w-5 ${isActive(item.url) ? 'text-primary' : ''}`} />
+                    <NavLink to={item.url} className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2">
+                      <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive(item.url) ? 'text-primary' : ''}`} />
                       {!isCollapsed && (
                         <>
-                          <span className="font-medium">{item.title}</span>
+                          <span className="font-medium text-sm sm:text-base truncate">{item.title}</span>
                           {isActive(item.url) && (
-                            <ChevronRight className="h-4 w-4 ml-auto text-primary" />
+                            <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 ml-auto text-primary flex-shrink-0" />
                           )}
                         </>
                       )}

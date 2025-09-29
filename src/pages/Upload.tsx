@@ -17,17 +17,17 @@ const Upload = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-6 max-w-7xl mx-auto space-y-6">
+      <div className="p-3 sm:p-6 max-w-7xl mx-auto space-y-4 sm:space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold">Upload Documents</h1>
-          <p className="text-muted-foreground text-lg">
+          <h1 className="text-2xl sm:text-3xl font-bold">Upload Documents</h1>
+          <p className="text-muted-foreground text-base sm:text-lg">
             Upload and process documents with AI-powered summarization
           </p>
         </div>
 
-        {/* Main Content - 50/50 Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[600px]">
+        {/* Main Content - Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 min-h-[600px]">
           {/* Left Side - Upload Zone */}
           <UploadZone onFileUpload={handleFileUpload} />
           
