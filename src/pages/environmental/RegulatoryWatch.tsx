@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -233,7 +234,8 @@ const RegulatoryWatch: React.FC = () => {
   const compliantCount = regulatoryUpdates.filter(update => update.status === 'compliant').length;
 
   return (
-    <div className="space-y-6">
+    <DashboardLayout>
+      <div className="space-y-6 overflow-x-hidden">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Regulatory Watch</h1>
@@ -373,13 +375,13 @@ const RegulatoryWatch: React.FC = () => {
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                       <div className="flex items-center gap-2">
                         <div className={`w-3 h-3 rounded-full ${getPriorityColor(update.priority)}`} />
-                        <h3 className="font-semibold text-gray-900 text-sm lg:text-base">{update.title}</h3>
+                        <h3 className="font-semibold text-gray-900 text-sm lg:text-base break-words">{update.title}</h3>
                       </div>
                       <Badge variant="outline" className={`${getStatusColor(update.status)} text-xs self-start sm:self-auto`}>
                         {update.status.replace('-', ' ').toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-gray-600 mb-3 text-sm lg:text-base">{update.summary}</p>
+                    <p className="text-gray-600 mb-3 text-sm lg:text-base break-words">{update.summary}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 text-sm text-gray-500 mb-3">
                       <div className="flex items-center gap-1">
                         {getTypeIcon(update.type)}
@@ -439,7 +441,8 @@ const RegulatoryWatch: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 };
 

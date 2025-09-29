@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -207,7 +208,8 @@ const EnvironmentalComplianceDocs: React.FC = () => {
   const pendingCount = documents.filter(doc => doc.status === 'pending-renewal').length;
 
   return (
-    <div className="space-y-6">
+    <DashboardLayout>
+      <div className="space-y-6 overflow-x-hidden">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Environmental Compliance Documents</h1>
@@ -351,14 +353,14 @@ const EnvironmentalComplianceDocs: React.FC = () => {
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                       <div className="flex items-center gap-2">
                         <div className={`w-3 h-3 rounded-full ${getComplianceLevelColor(doc.complianceLevel)}`} />
-                        <h3 className="font-semibold text-gray-900 text-sm lg:text-base">{doc.title}</h3>
+                        <h3 className="font-semibold text-gray-900 text-sm lg:text-base break-words">{doc.title}</h3>
                       </div>
                       <Badge variant="outline" className={`${getStatusColor(doc.status)} text-xs self-start sm:self-auto`}>
                         {getStatusIcon(doc.status)}
                         <span className="ml-1 capitalize">{doc.status.replace('-', ' ')}</span>
                       </Badge>
                     </div>
-                    <p className="text-gray-600 mb-3 text-sm lg:text-base">{doc.description}</p>
+                    <p className="text-gray-600 mb-3 text-sm lg:text-base break-words">{doc.description}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 text-sm text-gray-500 mb-3">
                       <div className="flex items-center gap-1">
                         {getTypeIcon(doc.type)}
@@ -414,7 +416,8 @@ const EnvironmentalComplianceDocs: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 };
 

@@ -229,7 +229,7 @@ const HRDashboardPage = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-4 md:space-y-6">
+      <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-4 md:space-y-6 overflow-x-hidden">
         {/* Header */}
         <div className="space-y-2">
           <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
@@ -286,7 +286,7 @@ const HRDashboardPage = () => {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <h3 className="font-semibold text-base">{policy.title}</h3>
+                          <h3 className="font-semibold text-base break-words">{policy.title}</h3>
                           <Badge variant={policy.status === "expired" ? "destructive" : "secondary"} className="text-xs">
                             {policy.status.replace("-", " ").toUpperCase()}
                           </Badge>
@@ -353,9 +353,9 @@ const HRDashboardPage = () => {
                         <div className="p-2 bg-primary/10 rounded">
                           <Users className="h-4 w-4" />
                         </div>
-                        <div>
-                          <h3 className="font-semibold">{employee.name}</h3>
-                          <p className="text-sm text-muted-foreground">{employee.position} - {employee.department}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold truncate">{employee.name}</h3>
+                          <p className="text-sm text-muted-foreground truncate">{employee.position} - {employee.department}</p>
                         </div>
                         <div className="flex items-center gap-1">
                           {getTrainingStatusIcon(employee.trainingStatus)}

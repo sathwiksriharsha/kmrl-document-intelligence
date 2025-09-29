@@ -1,4 +1,5 @@
 import React from 'react';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -141,7 +142,8 @@ const HRComplianceAlerts: React.FC = () => {
   const completed = complianceItems.filter(item => item.status === 'completed').length;
 
   return (
-    <div className="space-y-6">
+    <DashboardLayout>
+      <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-4 md:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">HR Compliance Alerts</h1>
@@ -270,7 +272,8 @@ const HRComplianceAlerts: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 };
 
