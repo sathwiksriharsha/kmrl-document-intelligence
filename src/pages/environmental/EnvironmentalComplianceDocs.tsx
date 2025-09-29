@@ -209,8 +209,8 @@ const EnvironmentalComplianceDocs: React.FC = () => {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6 overflow-x-hidden">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-4 md:space-y-6 overflow-x-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Environmental Compliance Documents</h1>
           <p className="text-gray-600 mt-2 text-sm sm:text-base">Manage environmental permits, certificates, and compliance documentation</p>
