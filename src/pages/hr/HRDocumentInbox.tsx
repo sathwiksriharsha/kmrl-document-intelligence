@@ -296,30 +296,32 @@ const HRDocumentInbox = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Input
                   placeholder="Search HR documents, policies, memos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="flex-1"
                 />
-                <Button variant="outline">
+                <Button variant="outline" className="sm:w-auto w-full">
                   <Search className="h-4 w-4" />
                 </Button>
               </div>
               
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:flex xl:flex-wrap gap-2">
                 <Button 
                   variant={selectedFilter === "all" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedFilter("all")}
                 >
-                  <Filter className="h-4 w-4 mr-1" />
+                  <Filter className="h-3 w-3 mr-1" />
                   All Documents
                 </Button>
                 <Button 
                   variant={selectedFilter === "new" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedFilter("new")}
                 >
                   New
@@ -327,6 +329,7 @@ const HRDocumentInbox = () => {
                 <Button 
                   variant={selectedFilter === "pending-action" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedFilter("pending-action")}
                 >
                   Pending Action
@@ -334,6 +337,7 @@ const HRDocumentInbox = () => {
                 <Button 
                   variant={selectedFilter === "policy" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedFilter("policy")}
                 >
                   Policies
@@ -341,6 +345,7 @@ const HRDocumentInbox = () => {
                 <Button 
                   variant={selectedFilter === "contract" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedFilter("contract")}
                 >
                   Contracts
@@ -348,6 +353,7 @@ const HRDocumentInbox = () => {
                 <Button 
                   variant={selectedFilter === "memo" ? "default" : "outline"} 
                   size="sm"
+                  className="text-xs"
                   onClick={() => setSelectedFilter("memo")}
                 >
                   Memos
@@ -396,24 +402,24 @@ const HRDocumentInbox = () => {
 
                         <p className="text-sm text-muted-foreground mb-3">{document.summary}</p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-muted-foreground mb-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm text-muted-foreground mb-3">
                           <div>
-                            <p><strong>Type:</strong> {document.type}</p>
-                            <p><strong>Category:</strong> {document.category.replace("-", " ")}</p>
+                            <p className="text-xs sm:text-sm"><strong>Type:</strong> {document.type}</p>
+                            <p className="text-xs sm:text-sm break-words"><strong>Category:</strong> {document.category.replace("-", " ")}</p>
                           </div>
                           <div>
-                            <p><strong>From:</strong> {document.sender}</p>
-                            <p><strong>Department:</strong> {document.department}</p>
+                            <p className="text-xs sm:text-sm break-words"><strong>From:</strong> {document.sender}</p>
+                            <p className="text-xs sm:text-sm break-words"><strong>Department:</strong> {document.department}</p>
                           </div>
                           <div>
-                            <p><strong>Received:</strong> {document.receivedDate}</p>
+                            <p className="text-xs sm:text-sm"><strong>Received:</strong> {document.receivedDate}</p>
                             {document.dueDate && (
-                              <p><strong>Due Date:</strong> {document.dueDate}</p>
+                              <p className="text-xs sm:text-sm"><strong>Due Date:</strong> {document.dueDate}</p>
                             )}
                           </div>
                           <div>
-                            <p><strong>File Size:</strong> {document.fileSize}</p>
-                            <p className="flex items-center gap-1">
+                            <p className="text-xs sm:text-sm"><strong>File Size:</strong> {document.fileSize}</p>
+                            <p className="flex items-center gap-1 text-xs sm:text-sm">
                               <Paperclip className="h-3 w-3" />
                               <strong>{document.attachments} attachments</strong>
                             </p>
@@ -430,8 +436,8 @@ const HRDocumentInbox = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 border-t">
-                      <div className="text-xs text-muted-foreground">
+                    <div className="flex flex-col gap-3 pt-2 border-t">
+                      <div className="text-xs text-muted-foreground break-words">
                         Document ID: {document.id} • Received: {document.receivedDate}
                         {document.dueDate && getDaysUntilDue(document.dueDate) !== null && (
                           <span> • {getDaysUntilDue(document.dueDate)! >= 0 
@@ -440,30 +446,30 @@ const HRDocumentInbox = () => {
                           }</span>
                         )}
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="text-xs">
+                      <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Eye className="h-3 w-3 mr-1" />
                           Preview
                         </Button>
-                        <Button variant="outline" size="sm" className="text-xs">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Download className="h-3 w-3 mr-1" />
                           Download
                         </Button>
-                        <Button variant="outline" size="sm" className="text-xs">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Star className="h-3 w-3 mr-1" />
                           Star
                         </Button>
                         {document.status === "pending-action" && (
-                          <Button size="sm" className="text-xs">
+                          <Button size="sm" className="text-xs flex-1 sm:flex-none">
                             Take Action
                           </Button>
                         )}
                         {document.status === "new" && (
-                          <Button size="sm" className="text-xs">
+                          <Button size="sm" className="text-xs flex-1 sm:flex-none">
                             Mark as Read
                           </Button>
                         )}
-                        <Button variant="outline" size="sm" className="text-xs">
+                        <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
                           <Archive className="h-3 w-3 mr-1" />
                           Archive
                         </Button>

@@ -238,20 +238,20 @@ const ExecutivesDashboard = () => {
     <DashboardLayout>
       <div className="p-6 max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <Building className="h-8 w-8 text-primary" />
+            <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
+              <Building className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               Executives & Legal Dashboard
             </h1>
-            <p className="text-muted-foreground">Strategic oversight and legal compliance management</p>
+            <p className="text-muted-foreground text-sm sm:text-base">Strategic oversight and legal compliance management</p>
           </div>
-          <div className="flex gap-2">
-            <Button className="gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button className="gap-2 w-full sm:w-auto">
               <Calendar className="h-4 w-4" />
               Schedule Meeting
             </Button>
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2 w-full sm:w-auto">
               <Scale className="h-4 w-4" />
               Legal Request
             </Button>

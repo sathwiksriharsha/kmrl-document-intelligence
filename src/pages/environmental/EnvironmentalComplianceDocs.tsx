@@ -208,17 +208,17 @@ const EnvironmentalComplianceDocs: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Environmental Compliance Documents</h1>
-          <p className="text-gray-600 mt-2">Manage environmental permits, certificates, and compliance documentation</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Environmental Compliance Documents</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">Manage environmental permits, certificates, and compliance documentation</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" className="w-full sm:w-auto">
             <Download className="h-4 w-4 mr-2" />
             Export List
           </Button>
-          <Button>
+          <Button className="w-full sm:w-auto">
             <Upload className="h-4 w-4 mr-2" />
             Upload Document
           </Button>
@@ -226,51 +226,51 @@ const EnvironmentalComplianceDocs: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Active</p>
-                <p className="text-2xl font-bold text-green-600">{activeCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Active</p>
+                <p className="text-xl lg:text-2xl font-bold text-green-600">{activeCount}</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <CheckCircle className="h-6 w-6 lg:h-8 lg:w-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Expiring Soon</p>
-                <p className="text-2xl font-bold text-orange-600">{expiringSoonCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Expiring Soon</p>
+                <p className="text-xl lg:text-2xl font-bold text-orange-600">{expiringSoonCount}</p>
               </div>
-              <Clock className="h-8 w-8 text-orange-600" />
+              <Clock className="h-6 w-6 lg:h-8 lg:w-8 text-orange-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Expired</p>
-                <p className="text-2xl font-bold text-red-600">{expiredCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Expired</p>
+                <p className="text-xl lg:text-2xl font-bold text-red-600">{expiredCount}</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+              <AlertTriangle className="h-6 w-6 lg:h-8 lg:w-8 text-red-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Pending Renewal</p>
-                <p className="text-2xl font-bold text-blue-600">{pendingCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Pending Renewal</p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-600">{pendingCount}</p>
               </div>
-              <Clock className="h-8 w-8 text-blue-600" />
+              <Clock className="h-6 w-6 lg:h-8 lg:w-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
@@ -278,23 +278,24 @@ const EnvironmentalComplianceDocs: React.FC = () => {
 
       {/* Filters */}
       <Card>
-        <CardContent className="p-6">
-          <div className="flex gap-4 flex-wrap">
-            <div className="flex-1 min-w-64">
+        <CardContent className="p-4 lg:p-6">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search documents..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 w-full"
                 />
               </div>
             </div>
-            <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Document Type" />
-              </SelectTrigger>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Select value={typeFilter} onValueChange={setTypeFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Document Type" />
+                </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="permit">Permit</SelectItem>
@@ -305,22 +306,22 @@ const EnvironmentalComplianceDocs: React.FC = () => {
                 <SelectItem value="audit">Audit</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="expiring-soon">Expiring Soon</SelectItem>
-                <SelectItem value="expired">Expired</SelectItem>
-                <SelectItem value="pending-renewal">Pending Renewal</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="active">Active</SelectItem>
+                  <SelectItem value="expiring-soon">Expiring Soon</SelectItem>
+                  <SelectItem value="expired">Expired</SelectItem>
+                  <SelectItem value="pending-renewal">Pending Renewal</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="air-quality">Air Quality</SelectItem>
@@ -330,7 +331,8 @@ const EnvironmentalComplianceDocs: React.FC = () => {
                 <SelectItem value="safety">Safety</SelectItem>
                 <SelectItem value="general">General</SelectItem>
               </SelectContent>
-            </Select>
+              </Select>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -344,18 +346,20 @@ const EnvironmentalComplianceDocs: React.FC = () => {
           <div className="space-y-4">
             {filteredDocuments.map((doc) => (
               <div key={doc.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-3 h-3 rounded-full ${getComplianceLevelColor(doc.complianceLevel)}`} />
-                      <h3 className="font-semibold text-gray-900">{doc.title}</h3>
-                      <Badge variant="outline" className={getStatusColor(doc.status)}>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className={`w-3 h-3 rounded-full ${getComplianceLevelColor(doc.complianceLevel)}`} />
+                        <h3 className="font-semibold text-gray-900 text-sm lg:text-base">{doc.title}</h3>
+                      </div>
+                      <Badge variant="outline" className={`${getStatusColor(doc.status)} text-xs self-start sm:self-auto`}>
                         {getStatusIcon(doc.status)}
                         <span className="ml-1 capitalize">{doc.status.replace('-', ' ')}</span>
                       </Badge>
                     </div>
-                    <p className="text-gray-600 mb-3">{doc.description}</p>
-                    <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mb-3">
+                    <p className="text-gray-600 mb-3 text-sm lg:text-base">{doc.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 text-sm text-gray-500 mb-3">
                       <div className="flex items-center gap-1">
                         {getTypeIcon(doc.type)}
                         <span className="capitalize">{doc.type}</span>
@@ -364,8 +368,8 @@ const EnvironmentalComplianceDocs: React.FC = () => {
                         <Calendar className="h-4 w-4" />
                         <span>Issued: {new Date(doc.issueDate).toLocaleDateString()}</span>
                       </div>
-                      <div>
-                        <span className="font-medium">Authority:</span> {doc.authority}
+                      <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+                        <span className="font-medium">Authority:</span> <span className="break-words">{doc.authority}</span>
                       </div>
                       {doc.expiryDate && (
                         <div className="flex items-center gap-1">
@@ -373,15 +377,15 @@ const EnvironmentalComplianceDocs: React.FC = () => {
                           <span>Expires: {new Date(doc.expiryDate).toLocaleDateString()}</span>
                         </div>
                       )}
-                      <div>
+                      <div className="break-all">
                         <span className="font-medium">Document #:</span> {doc.documentNumber}
                       </div>
                       <div>
                         <span className="font-medium">Size:</span> {doc.fileSize}
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-xs">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                      <Badge variant="outline" className="text-xs self-start">
                         {doc.category.replace('-', ' ').toUpperCase()}
                       </Badge>
                       <span className="text-xs text-gray-400">
@@ -389,17 +393,17 @@ const EnvironmentalComplianceDocs: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                  <div className="flex flex-col sm:flex-row gap-2 lg:flex-col xl:flex-row">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
                       <Eye className="h-4 w-4 mr-1" />
                       View
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
                       <Download className="h-4 w-4 mr-1" />
                       Download
                     </Button>
                     {(doc.status === 'expiring-soon' || doc.status === 'expired') && (
-                      <Button size="sm">
+                      <Button size="sm" className="w-full sm:w-auto">
                         Renew
                       </Button>
                     )}

@@ -59,20 +59,20 @@ const AdminDashboard = () => {
     <DashboardLayout>
       <div className="p-6 max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <Shield className="h-8 w-8 text-primary" />
+            <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
+              <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               Admin Dashboard
             </h1>
-            <p className="text-muted-foreground">System overview and user management</p>
+            <p className="text-muted-foreground text-sm sm:text-base">System overview and user management</p>
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" className="gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button variant="outline" className="gap-2 w-full sm:w-auto">
               <UserPlus className="h-4 w-4" />
               Add User
             </Button>
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2 w-full sm:w-auto">
               <Settings className="h-4 w-4" />
               System Settings
             </Button>

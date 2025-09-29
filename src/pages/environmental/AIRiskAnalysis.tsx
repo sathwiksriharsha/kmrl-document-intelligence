@@ -256,14 +256,14 @@ const AIRiskAnalysis: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">AI Risk Analysis</h1>
-          <p className="text-gray-600 mt-2">AI-powered environmental risk assessment and predictive analytics</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">AI Risk Analysis</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">AI-powered environmental risk assessment and predictive analytics</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <Select value={timeRange} onValueChange={setTimeRange}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-full sm:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -273,7 +273,7 @@ const AIRiskAnalysis: React.FC = () => {
               <SelectItem value="1y">1 year</SelectItem>
             </SelectContent>
           </Select>
-          <Button>
+          <Button className="w-full sm:w-auto">
             <RefreshCw className="h-4 w-4 mr-2" />
             Refresh Analysis
           </Button>

@@ -167,17 +167,17 @@ const HRTrainingTracker: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Training Tracker</h1>
-          <p className="text-gray-600 mt-2">Monitor employee training progress and compliance</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Training Tracker</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">Monitor employee training progress and compliance</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" className="w-full sm:w-auto">
             <Download className="h-4 w-4 mr-2" />
             Export Report
           </Button>
-          <Button>
+          <Button className="w-full sm:w-auto">
             <Plus className="h-4 w-4 mr-2" />
             Add Training
           </Button>
@@ -185,51 +185,51 @@ const HRTrainingTracker: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Completed</p>
-                <p className="text-2xl font-bold text-green-600">{completed}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Completed</p>
+                <p className="text-xl lg:text-2xl font-bold text-green-600">{completed}</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <CheckCircle className="h-6 w-6 lg:h-8 lg:w-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">In Progress</p>
-                <p className="text-2xl font-bold text-blue-600">{inProgress}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">In Progress</p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-600">{inProgress}</p>
               </div>
-              <Clock className="h-8 w-8 text-blue-600" />
+              <Clock className="h-6 w-6 lg:h-8 lg:w-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Overdue</p>
-                <p className="text-2xl font-bold text-red-600">{overdue}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Overdue</p>
+                <p className="text-xl lg:text-2xl font-bold text-red-600">{overdue}</p>
               </div>
-              <XCircle className="h-8 w-8 text-red-600" />
+              <XCircle className="h-6 w-6 lg:h-8 lg:w-8 text-red-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Not Started</p>
-                <p className="text-2xl font-bold text-gray-600">{notStarted}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Not Started</p>
+                <p className="text-xl lg:text-2xl font-bold text-gray-600">{notStarted}</p>
               </div>
-              <AlertCircle className="h-8 w-8 text-gray-600" />
+              <AlertCircle className="h-6 w-6 lg:h-8 lg:w-8 text-gray-600" />
             </div>
           </CardContent>
         </Card>
@@ -237,21 +237,21 @@ const HRTrainingTracker: React.FC = () => {
 
       {/* Filters */}
       <Card>
-        <CardContent className="p-6">
-          <div className="flex gap-4 flex-wrap">
-            <div className="flex-1 min-w-64">
+        <CardContent className="p-4 lg:p-6">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search by employee, training, or department..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 w-full"
                 />
               </div>
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-48">
+              <SelectTrigger className="w-full sm:w-48">
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
@@ -263,7 +263,7 @@ const HRTrainingTracker: React.FC = () => {
               </SelectContent>
             </Select>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-48">
+              <SelectTrigger className="w-full sm:w-48">
                 <SelectValue placeholder="Filter by type" />
               </SelectTrigger>
               <SelectContent>
@@ -286,17 +286,19 @@ const HRTrainingTracker: React.FC = () => {
           <div className="space-y-4">
             {filteredRecords.map((record) => (
               <div key={record.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                       <h3 className="font-semibold text-gray-900">{record.employeeName}</h3>
-                      <span className="text-sm text-gray-500">({record.employeeId})</span>
-                      <Badge variant="outline" className="text-xs">
-                        {record.department}
-                      </Badge>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm text-gray-500">({record.employeeId})</span>
+                        <Badge variant="outline" className="text-xs">
+                          {record.department}
+                        </Badge>
+                      </div>
                     </div>
                     <h4 className="font-medium text-gray-800 mb-2">{record.trainingTitle}</h4>
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-500 mb-3">
                       <div className="flex items-center gap-1">
                         {getTypeIcon(record.trainingType)}
                         <span className="capitalize">{record.trainingType}</span>
@@ -311,42 +313,44 @@ const HRTrainingTracker: React.FC = () => {
                       </div>
                       <span>{record.provider}</span>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                       <Badge variant="outline" className={getStatusColor(record.status)}>
                         {getStatusIcon(record.status)}
                         <span className="ml-1 capitalize">{record.status.replace('-', ' ')}</span>
                       </Badge>
-                      {record.score && (
-                        <div className="flex items-center gap-1 text-sm">
-                          <Award className="h-4 w-4 text-yellow-600" />
-                          <span className="font-medium">Score: {record.score}%</span>
-                        </div>
-                      )}
-                      {record.certificateId && (
-                        <div className="flex items-center gap-1 text-sm">
-                          <Award className="h-4 w-4 text-purple-600" />
-                          <span>Cert: {record.certificateId}</span>
-                        </div>
-                      )}
-                      {record.completionDate && (
-                        <div className="flex items-center gap-1 text-sm text-green-600">
-                          <CheckCircle className="h-4 w-4" />
-                          <span>Completed: {new Date(record.completionDate).toLocaleDateString()}</span>
-                        </div>
-                      )}
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                        {record.score && (
+                          <div className="flex items-center gap-1 text-sm">
+                            <Award className="h-4 w-4 text-yellow-600" />
+                            <span className="font-medium">Score: {record.score}%</span>
+                          </div>
+                        )}
+                        {record.certificateId && (
+                          <div className="flex items-center gap-1 text-sm">
+                            <Award className="h-4 w-4 text-purple-600" />
+                            <span>Cert: {record.certificateId}</span>
+                          </div>
+                        )}
+                        {record.completionDate && (
+                          <div className="flex items-center gap-1 text-sm text-green-600">
+                            <CheckCircle className="h-4 w-4" />
+                            <span>Completed: {new Date(record.completionDate).toLocaleDateString()}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                  <div className="flex flex-col sm:flex-row gap-2 lg:flex-col xl:flex-row">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
                       View Details
                     </Button>
                     {record.status === 'not-started' && (
-                      <Button size="sm">
+                      <Button size="sm" className="w-full sm:w-auto">
                         Start Training
                       </Button>
                     )}
                     {record.status === 'completed' && record.certificateId && (
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="w-full sm:w-auto">
                         <Download className="h-4 w-4 mr-1" />
                         Certificate
                       </Button>

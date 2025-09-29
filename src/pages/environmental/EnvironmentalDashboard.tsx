@@ -72,17 +72,17 @@ const EnvironmentalDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Environmental Dashboard</h1>
-          <p className="text-gray-600 mt-2">Monitor environmental performance and compliance</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Environmental Dashboard</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">Monitor environmental performance and compliance</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" className="w-full sm:w-auto">
             <BarChart3 className="h-4 w-4 mr-2" />
             Generate Report
           </Button>
-          <Button>
+          <Button className="w-full sm:w-auto">
             <Leaf className="h-4 w-4 mr-2" />
             New Initiative
           </Button>
@@ -90,116 +90,116 @@ const EnvironmentalDashboard: React.FC = () => {
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Carbon Footprint</p>
-                <p className="text-2xl font-bold">{environmentalMetrics.carbonFootprint.current.toLocaleString()}</p>
-                <p className="text-sm text-gray-500">{environmentalMetrics.carbonFootprint.unit} / Target: {environmentalMetrics.carbonFootprint.target.toLocaleString()}</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Carbon Footprint</p>
+                <p className="text-lg lg:text-2xl font-bold truncate">{environmentalMetrics.carbonFootprint.current.toLocaleString()}</p>
+                <p className="text-xs lg:text-sm text-gray-500 truncate">{environmentalMetrics.carbonFootprint.unit} / Target: {environmentalMetrics.carbonFootprint.target.toLocaleString()}</p>
                 <div className="flex items-center mt-2">
-                  <TrendingDown className="h-4 w-4 text-green-600 mr-1" />
-                  <span className="text-sm text-green-600">{Math.abs(environmentalMetrics.carbonFootprint.change)}% reduction</span>
+                  <TrendingDown className="h-3 w-3 lg:h-4 lg:w-4 text-green-600 mr-1" />
+                  <span className="text-xs lg:text-sm text-green-600">{Math.abs(environmentalMetrics.carbonFootprint.change)}% reduction</span>
                 </div>
               </div>
-              <div className="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
-                <Leaf className="h-6 w-6 text-green-600" />
+              <div className="h-10 w-10 lg:h-12 lg:w-12 bg-green-100 rounded-full flex items-center justify-center ml-2">
+                <Leaf className="h-5 w-5 lg:h-6 lg:w-6 text-green-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Water Usage</p>
-                <p className="text-2xl font-bold">{environmentalMetrics.waterUsage.current.toLocaleString()}</p>
-                <p className="text-sm text-gray-500">{environmentalMetrics.waterUsage.unit} / Target: {environmentalMetrics.waterUsage.target.toLocaleString()}</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Water Usage</p>
+                <p className="text-lg lg:text-2xl font-bold truncate">{environmentalMetrics.waterUsage.current.toLocaleString()}</p>
+                <p className="text-xs lg:text-sm text-gray-500 truncate">{environmentalMetrics.waterUsage.unit} / Target: {environmentalMetrics.waterUsage.target.toLocaleString()}</p>
                 <div className="flex items-center mt-2">
-                  <TrendingDown className="h-4 w-4 text-green-600 mr-1" />
-                  <span className="text-sm text-green-600">{Math.abs(environmentalMetrics.waterUsage.change)}% reduction</span>
+                  <TrendingDown className="h-3 w-3 lg:h-4 lg:w-4 text-green-600 mr-1" />
+                  <span className="text-xs lg:text-sm text-green-600">{Math.abs(environmentalMetrics.waterUsage.change)}% reduction</span>
                 </div>
               </div>
-              <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <Droplets className="h-6 w-6 text-blue-600" />
+              <div className="h-10 w-10 lg:h-12 lg:w-12 bg-blue-100 rounded-full flex items-center justify-center ml-2">
+                <Droplets className="h-5 w-5 lg:h-6 lg:w-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Energy Consumption</p>
-                <p className="text-2xl font-bold">{environmentalMetrics.energyConsumption.current.toLocaleString()}</p>
-                <p className="text-sm text-gray-500">{environmentalMetrics.energyConsumption.unit} / Target: {environmentalMetrics.energyConsumption.target.toLocaleString()}</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Energy Consumption</p>
+                <p className="text-lg lg:text-2xl font-bold truncate">{environmentalMetrics.energyConsumption.current.toLocaleString()}</p>
+                <p className="text-xs lg:text-sm text-gray-500 truncate">{environmentalMetrics.energyConsumption.unit} / Target: {environmentalMetrics.energyConsumption.target.toLocaleString()}</p>
                 <div className="flex items-center mt-2">
-                  <TrendingDown className="h-4 w-4 text-green-600 mr-1" />
-                  <span className="text-sm text-green-600">{Math.abs(environmentalMetrics.energyConsumption.change)}% reduction</span>
+                  <TrendingDown className="h-3 w-3 lg:h-4 lg:w-4 text-green-600 mr-1" />
+                  <span className="text-xs lg:text-sm text-green-600">{Math.abs(environmentalMetrics.energyConsumption.change)}% reduction</span>
                 </div>
               </div>
-              <div className="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                <Zap className="h-6 w-6 text-yellow-600" />
+              <div className="h-10 w-10 lg:h-12 lg:w-12 bg-yellow-100 rounded-full flex items-center justify-center ml-2">
+                <Zap className="h-5 w-5 lg:h-6 lg:w-6 text-yellow-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Waste Generation</p>
-                <p className="text-2xl font-bold">{environmentalMetrics.wasteGeneration.current.toLocaleString()}</p>
-                <p className="text-sm text-gray-500">{environmentalMetrics.wasteGeneration.unit} / Target: {environmentalMetrics.wasteGeneration.target.toLocaleString()}</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Waste Generation</p>
+                <p className="text-lg lg:text-2xl font-bold truncate">{environmentalMetrics.wasteGeneration.current.toLocaleString()}</p>
+                <p className="text-xs lg:text-sm text-gray-500 truncate">{environmentalMetrics.wasteGeneration.unit} / Target: {environmentalMetrics.wasteGeneration.target.toLocaleString()}</p>
                 <div className="flex items-center mt-2">
-                  <TrendingDown className="h-4 w-4 text-green-600 mr-1" />
-                  <span className="text-sm text-green-600">{Math.abs(environmentalMetrics.wasteGeneration.change)}% reduction</span>
+                  <TrendingDown className="h-3 w-3 lg:h-4 lg:w-4 text-green-600 mr-1" />
+                  <span className="text-xs lg:text-sm text-green-600">{Math.abs(environmentalMetrics.wasteGeneration.change)}% reduction</span>
                 </div>
               </div>
-              <div className="h-12 w-12 bg-red-100 rounded-full flex items-center justify-center">
-                <Trash2 className="h-6 w-6 text-red-600" />
+              <div className="h-10 w-10 lg:h-12 lg:w-12 bg-red-100 rounded-full flex items-center justify-center ml-2">
+                <Trash2 className="h-5 w-5 lg:h-6 lg:w-6 text-red-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Recycling Rate</p>
-                <p className="text-2xl font-bold">{environmentalMetrics.recyclingRate.current}%</p>
-                <p className="text-sm text-gray-500">Target: {environmentalMetrics.recyclingRate.target}%</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Recycling Rate</p>
+                <p className="text-lg lg:text-2xl font-bold">{environmentalMetrics.recyclingRate.current}%</p>
+                <p className="text-xs lg:text-sm text-gray-500">Target: {environmentalMetrics.recyclingRate.target}%</p>
                 <div className="flex items-center mt-2">
-                  <TrendingUp className="h-4 w-4 text-green-600 mr-1" />
-                  <span className="text-sm text-green-600">{environmentalMetrics.recyclingRate.change}% increase</span>
+                  <TrendingUp className="h-3 w-3 lg:h-4 lg:w-4 text-green-600 mr-1" />
+                  <span className="text-xs lg:text-sm text-green-600">{environmentalMetrics.recyclingRate.change}% increase</span>
                 </div>
               </div>
-              <div className="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
-                <Trash2 className="h-6 w-6 text-green-600" />
+              <div className="h-10 w-10 lg:h-12 lg:w-12 bg-green-100 rounded-full flex items-center justify-center ml-2">
+                <Trash2 className="h-5 w-5 lg:h-6 lg:w-6 text-green-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Renewable Energy</p>
-                <p className="text-2xl font-bold">{environmentalMetrics.renewableEnergy.current}%</p>
-                <p className="text-sm text-gray-500">Target: {environmentalMetrics.renewableEnergy.target}%</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Renewable Energy</p>
+                <p className="text-lg lg:text-2xl font-bold">{environmentalMetrics.renewableEnergy.current}%</p>
+                <p className="text-xs lg:text-sm text-gray-500">Target: {environmentalMetrics.renewableEnergy.target}%</p>
                 <div className="flex items-center mt-2">
-                  <TrendingUp className="h-4 w-4 text-green-600 mr-1" />
-                  <span className="text-sm text-green-600">{environmentalMetrics.renewableEnergy.change}% increase</span>
+                  <TrendingUp className="h-3 w-3 lg:h-4 lg:w-4 text-green-600 mr-1" />
+                  <span className="text-xs lg:text-sm text-green-600">{environmentalMetrics.renewableEnergy.change}% increase</span>
                 </div>
               </div>
-              <div className="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                <Wind className="h-6 w-6 text-yellow-600" />
+              <div className="h-10 w-10 lg:h-12 lg:w-12 bg-yellow-100 rounded-full flex items-center justify-center ml-2">
+                <Wind className="h-5 w-5 lg:h-6 lg:w-6 text-yellow-600" />
               </div>
             </div>
           </CardContent>
@@ -218,15 +218,15 @@ const EnvironmentalDashboard: React.FC = () => {
           <CardContent>
             <div className="space-y-4">
               {complianceStatus.map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 border rounded-lg gap-2">
                   <div className="flex-1">
-                    <h4 className="font-medium text-gray-900">{item.regulation}</h4>
-                    <div className="flex items-center gap-4 mt-1 text-sm text-gray-500">
+                    <h4 className="font-medium text-gray-900 text-sm lg:text-base">{item.regulation}</h4>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs lg:text-sm text-gray-500">
                       <span>Last Audit: {new Date(item.lastAudit).toLocaleDateString()}</span>
                       <span>Next Review: {new Date(item.nextReview).toLocaleDateString()}</span>
                     </div>
                   </div>
-                  <Badge variant="outline" className={getStatusColor(item.status)}>
+                  <Badge variant="outline" className={`${getStatusColor(item.status)} self-start sm:self-auto text-xs`}>
                     {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
                   </Badge>
                 </div>
@@ -247,17 +247,17 @@ const EnvironmentalDashboard: React.FC = () => {
             <div className="space-y-4">
               {recentActivities.map((activity) => (
                 <div key={activity.id} className="flex items-start gap-3 p-3 border rounded-lg">
-                  <div className="mt-1">
+                  <div className="mt-1 flex-shrink-0">
                     {getActivityIcon(activity.type)}
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-medium text-gray-900">{activity.title}</h4>
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="text-sm text-gray-500">{new Date(activity.date).toLocaleDateString()}</span>
-                      <Badge variant="outline" size="sm" className={
-                        activity.status === 'completed' ? 'bg-green-100 text-green-800' :
-                        activity.status === 'in-progress' ? 'bg-blue-100 text-blue-800' :
-                        'bg-yellow-100 text-yellow-800'
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-gray-900 text-sm lg:text-base truncate">{activity.title}</h4>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mt-1">
+                      <span className="text-xs lg:text-sm text-gray-500">{new Date(activity.date).toLocaleDateString()}</span>
+                      <Badge variant="outline" className={
+                        activity.status === 'completed' ? 'bg-green-100 text-green-800 text-xs self-start' :
+                        activity.status === 'in-progress' ? 'bg-blue-100 text-blue-800 text-xs self-start' :
+                        'bg-yellow-100 text-yellow-800 text-xs self-start'
                       }>
                         {activity.status.replace('-', ' ')}
                       </Badge>

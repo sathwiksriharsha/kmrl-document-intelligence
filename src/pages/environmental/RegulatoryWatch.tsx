@@ -234,17 +234,17 @@ const RegulatoryWatch: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Regulatory Watch</h1>
-          <p className="text-gray-600 mt-2">Stay updated with environmental regulations and compliance requirements</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Regulatory Watch</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">Stay updated with environmental regulations and compliance requirements</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" className="w-full sm:w-auto">
             <Bell className="h-4 w-4 mr-2" />
             Set Alerts
           </Button>
-          <Button>
+          <Button className="w-full sm:w-auto">
             <Bookmark className="h-4 w-4 mr-2" />
             Subscribe to Updates
           </Button>
@@ -252,51 +252,51 @@ const RegulatoryWatch: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">New Updates</p>
-                <p className="text-2xl font-bold text-blue-600">{newCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">New Updates</p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-600">{newCount}</p>
               </div>
-              <Bell className="h-8 w-8 text-blue-600" />
+              <Bell className="h-6 w-6 lg:h-8 lg:w-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Action Required</p>
-                <p className="text-2xl font-bold text-red-600">{actionRequiredCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Action Required</p>
+                <p className="text-xl lg:text-2xl font-bold text-red-600">{actionRequiredCount}</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+              <AlertTriangle className="h-6 w-6 lg:h-8 lg:w-8 text-red-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Reviewed</p>
-                <p className="text-2xl font-bold text-gray-600">{reviewedCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Reviewed</p>
+                <p className="text-xl lg:text-2xl font-bold text-gray-600">{reviewedCount}</p>
               </div>
-              <Eye className="h-8 w-8 text-gray-600" />
+              <Eye className="h-6 w-6 lg:h-8 lg:w-8 text-gray-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Compliant</p>
-                <p className="text-2xl font-bold text-green-600">{compliantCount}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Compliant</p>
+                <p className="text-xl lg:text-2xl font-bold text-green-600">{compliantCount}</p>
               </div>
-              <TrendingUp className="h-8 w-8 text-green-600" />
+              <TrendingUp className="h-6 w-6 lg:h-8 lg:w-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
@@ -304,23 +304,24 @@ const RegulatoryWatch: React.FC = () => {
 
       {/* Filters */}
       <Card>
-        <CardContent className="p-6">
-          <div className="flex gap-4 flex-wrap">
-            <div className="flex-1 min-w-64">
+        <CardContent className="p-4 lg:p-6">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search regulations..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 w-full"
                 />
               </div>
             </div>
-            <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Type" />
-              </SelectTrigger>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Select value={typeFilter} onValueChange={setTypeFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Type" />
+                </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="new-regulation">New Regulation</SelectItem>
@@ -330,29 +331,30 @@ const RegulatoryWatch: React.FC = () => {
                 <SelectItem value="deadline">Deadline</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={priorityFilter} onValueChange={setPriorityFilter}>
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Priority" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Priorities</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="low">Low</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="new">New</SelectItem>
-                <SelectItem value="reviewed">Reviewed</SelectItem>
-                <SelectItem value="action-required">Action Required</SelectItem>
-                <SelectItem value="compliant">Compliant</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select value={priorityFilter} onValueChange={setPriorityFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Priority" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Priorities</SelectItem>
+                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="low">Low</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="new">New</SelectItem>
+                  <SelectItem value="reviewed">Reviewed</SelectItem>
+                  <SelectItem value="action-required">Action Required</SelectItem>
+                  <SelectItem value="compliant">Compliant</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -366,17 +368,19 @@ const RegulatoryWatch: React.FC = () => {
           <div className="space-y-4">
             {filteredUpdates.map((update) => (
               <div key={update.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-3 h-3 rounded-full ${getPriorityColor(update.priority)}`} />
-                      <h3 className="font-semibold text-gray-900">{update.title}</h3>
-                      <Badge variant="outline" className={getStatusColor(update.status)}>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className={`w-3 h-3 rounded-full ${getPriorityColor(update.priority)}`} />
+                        <h3 className="font-semibold text-gray-900 text-sm lg:text-base">{update.title}</h3>
+                      </div>
+                      <Badge variant="outline" className={`${getStatusColor(update.status)} text-xs self-start sm:self-auto`}>
                         {update.status.replace('-', ' ').toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-gray-600 mb-3">{update.summary}</p>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-500 mb-3">
+                    <p className="text-gray-600 mb-3 text-sm lg:text-base">{update.summary}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 text-sm text-gray-500 mb-3">
                       <div className="flex items-center gap-1">
                         {getTypeIcon(update.type)}
                         <span className="capitalize">{update.type.replace('-', ' ')}</span>

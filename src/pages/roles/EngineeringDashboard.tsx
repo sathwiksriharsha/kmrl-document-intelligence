@@ -144,15 +144,15 @@ const EngineeringDashboard = () => {
     <DashboardLayout>
       <div className="p-6 max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <Wrench className="h-8 w-8 text-primary" />
+            <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
+              <Wrench className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               Engineering & Safety Dashboard
             </h1>
-            <p className="text-muted-foreground">Monitor incidents, safety alerts, and technical documentation</p>
+            <p className="text-muted-foreground text-sm sm:text-base">Monitor incidents, safety alerts, and technical documentation</p>
           </div>
-          <Button className="gap-2">
+          <Button className="gap-2 w-full sm:w-auto">
             <FileText className="h-4 w-4" />
             Upload Report
           </Button>

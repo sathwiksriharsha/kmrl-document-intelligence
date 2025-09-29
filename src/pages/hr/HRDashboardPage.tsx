@@ -298,30 +298,30 @@ const HRDashboardPage = () => {
                           )}
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-muted-foreground">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 text-sm text-muted-foreground mb-3">
                           <div>
-                            <p><strong>Category:</strong> {policy.category.replace("-", " ")}</p>
-                            <p><strong>Owner:</strong> {policy.owner}</p>
+                            <p className="text-xs sm:text-sm"><strong>Category:</strong> {policy.category.replace("-", " ")}</p>
+                            <p className="text-xs sm:text-sm break-words"><strong>Owner:</strong> {policy.owner}</p>
                           </div>
                           <div>
-                            <p><strong>Last Updated:</strong> {policy.lastUpdated}</p>
-                            <p><strong>Expiry Date:</strong> {policy.expiryDate}</p>
+                            <p className="text-xs sm:text-sm"><strong>Last Updated:</strong> {policy.lastUpdated}</p>
+                            <p className="text-xs sm:text-sm"><strong>Expiry Date:</strong> {policy.expiryDate}</p>
                           </div>
                           <div>
-                            <p><strong>Applicable Employees:</strong> {policy.applicableEmployees}</p>
-                            <p><strong>Days to Expiry:</strong> {getDaysUntilExpiry(policy.expiryDate) >= 0 
+                            <p className="text-xs sm:text-sm"><strong>Applicable Employees:</strong> {policy.applicableEmployees}</p>
+                            <p className="text-xs sm:text-sm"><strong>Days to Expiry:</strong> {getDaysUntilExpiry(policy.expiryDate) >= 0 
                               ? `${getDaysUntilExpiry(policy.expiryDate)} days`
                               : `${Math.abs(getDaysUntilExpiry(policy.expiryDate))} days overdue`
                             }</p>
                           </div>
-                          <div className="flex flex-col gap-2">
-                            <Button variant="outline" size="sm" className="text-xs">
-                              View Policy
-                            </Button>
-                            <Button size="sm" className="text-xs">
-                              Edit Policy
-                            </Button>
-                          </div>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-2 pt-2 border-t">
+                          <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
+                            View Policy
+                          </Button>
+                          <Button size="sm" className="text-xs flex-1 sm:flex-none">
+                            Edit Policy
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -365,22 +365,22 @@ const HRDashboardPage = () => {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-muted-foreground mb-3">
+                      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm text-muted-foreground mb-3">
                         <div>
-                          <p><strong>Hire Date:</strong> {employee.hireDate}</p>
+                          <p className="text-xs sm:text-sm"><strong>Hire Date:</strong> {employee.hireDate}</p>
                         </div>
                         <div>
-                          <p><strong>Last Training:</strong> {employee.lastTraining}</p>
+                          <p className="text-xs sm:text-sm break-words"><strong>Last Training:</strong> {employee.lastTraining}</p>
                         </div>
                         <div>
-                          <p><strong>Compliance Score:</strong> {employee.complianceScore}%</p>
+                          <p className="text-xs sm:text-sm"><strong>Compliance Score:</strong> {employee.complianceScore}%</p>
                         </div>
                         <div>
-                          <p><strong>Department:</strong> {employee.department}</p>
+                          <p className="text-xs sm:text-sm break-words"><strong>Department:</strong> {employee.department}</p>
                         </div>
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 mb-3">
                         <div className="flex items-center justify-between text-sm">
                           <span>Compliance Score</span>
                           <span>{employee.complianceScore}%</span>
@@ -388,14 +388,15 @@ const HRDashboardPage = () => {
                         <Progress value={employee.complianceScore} className="h-2" />
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2 ml-4">
-                      <Button variant="outline" size="sm" className="text-xs">
-                        View Profile
-                      </Button>
-                      <Button size="sm" className="text-xs">
-                        Assign Training
-                      </Button>
-                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-2 pt-3 border-t">
+                    <Button variant="outline" size="sm" className="text-xs flex-1 sm:flex-none">
+                      View Profile
+                    </Button>
+                    <Button size="sm" className="text-xs flex-1 sm:flex-none">
+                      Assign Training
+                    </Button>
                   </div>
                 </div>
               ))}

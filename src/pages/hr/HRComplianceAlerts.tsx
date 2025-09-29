@@ -142,63 +142,63 @@ const HRComplianceAlerts: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">HR Compliance Alerts</h1>
-          <p className="text-gray-600 mt-2">Monitor and manage HR compliance requirements</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">HR Compliance Alerts</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">Monitor and manage HR compliance requirements</p>
         </div>
-        <Button>
+        <Button className="w-full sm:w-auto">
           <AlertTriangle className="h-4 w-4 mr-2" />
           Add Alert
         </Button>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Overdue</p>
-                <p className="text-2xl font-bold text-red-600">{overdue}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Overdue</p>
+                <p className="text-xl lg:text-2xl font-bold text-red-600">{overdue}</p>
               </div>
-              <XCircle className="h-8 w-8 text-red-600" />
+              <XCircle className="h-6 w-6 lg:h-8 lg:w-8 text-red-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Due Soon</p>
-                <p className="text-2xl font-bold text-orange-600">{dueSoon}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Due Soon</p>
+                <p className="text-xl lg:text-2xl font-bold text-orange-600">{dueSoon}</p>
               </div>
-              <AlertCircle className="h-8 w-8 text-orange-600" />
+              <AlertCircle className="h-6 w-6 lg:h-8 lg:w-8 text-orange-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">On Track</p>
-                <p className="text-2xl font-bold text-blue-600">{onTrack}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">On Track</p>
+                <p className="text-xl lg:text-2xl font-bold text-blue-600">{onTrack}</p>
               </div>
-              <Clock className="h-8 w-8 text-blue-600" />
+              <Clock className="h-6 w-6 lg:h-8 lg:w-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 lg:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Completed</p>
-                <p className="text-2xl font-bold text-green-600">{completed}</p>
+                <p className="text-xs lg:text-sm font-medium text-gray-600">Completed</p>
+                <p className="text-xl lg:text-2xl font-bold text-green-600">{completed}</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <CheckCircle className="h-6 w-6 lg:h-8 lg:w-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
@@ -213,49 +213,53 @@ const HRComplianceAlerts: React.FC = () => {
           <div className="space-y-4">
             {complianceItems.map((item) => (
               <div key={item.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-3 h-3 rounded-full ${getPriorityColor(item.priority)}`} />
-                      <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className={`w-3 h-3 rounded-full ${getPriorityColor(item.priority)}`} />
+                        <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                      </div>
                       <Badge variant="outline" className={getStatusColor(item.status)}>
                         {getStatusIcon(item.status)}
                         <span className="ml-1 capitalize">{item.status.replace('-', ' ')}</span>
                       </Badge>
                     </div>
-                    <p className="text-gray-600 mb-3">{item.description}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <div className="flex items-center gap-1">
-                        {getCategoryIcon(item.category)}
-                        <span className="capitalize">{item.category.replace('-', ' ')}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        <span>Due: {new Date(item.deadline).toLocaleDateString()}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Users className="h-4 w-4" />
-                        <span>{item.assignedTo}</span>
-                      </div>
-                      {item.status !== 'completed' && (
+                    <p className="text-gray-600 mb-3 text-sm sm:text-base">{item.description}</p>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-500">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                         <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>
-                            {item.daysRemaining > 0 
-                              ? `${item.daysRemaining} days left`
-                              : `${Math.abs(item.daysRemaining)} days overdue`
-                            }
-                          </span>
+                          {getCategoryIcon(item.category)}
+                          <span className="capitalize">{item.category.replace('-', ' ')}</span>
                         </div>
-                      )}
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          <span>Due: {new Date(item.deadline).toLocaleDateString()}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Users className="h-4 w-4" />
+                          <span>{item.assignedTo}</span>
+                        </div>
+                        {item.status !== 'completed' && (
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-4 w-4" />
+                            <span>
+                              {item.daysRemaining > 0 
+                                ? `${item.daysRemaining} days left`
+                                : `${Math.abs(item.daysRemaining)} days overdue`
+                              }
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                  <div className="flex flex-col sm:flex-row gap-2 lg:flex-col xl:flex-row">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
                       View Details
                     </Button>
                     {item.status !== 'completed' && (
-                      <Button size="sm">
+                      <Button size="sm" className="w-full sm:w-auto">
                         Mark Complete
                       </Button>
                     )}
